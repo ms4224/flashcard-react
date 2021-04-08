@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 class Flip extends React.Component<IFlipProps, IFlipState> {
@@ -6,19 +7,34 @@ class Flip extends React.Component<IFlipProps, IFlipState> {
         this.state = {
             flip: false,
         }
+        this.flip = this.flip.bind(this);
+        this.card = this.card.bind(this);
     }
 
     render() {
         return (
             <div>
-                {
-                    this.state.flip ?
-                <div className="not-shown" onClick={}>{this.props.title}</div>
-                :
-                <div className="shown">{this.props.word}</div>
-                }
+                {this.card()}
             </div>
         )
+    }
+
+    componentDidUpdate(prevProps: IFlipProps) {
+        console.log('called')
+        // this.setState({
+        //     flip: false
+        // })
+        if (this.props.word !== prevProps.word) {
+            this.setState({
+                flip: false
+            })
+        }
+    }
+
+    card() {
+        return this.state.flip ?
+        <div className="shown">{this.props.word}</div> :
+        <div className="not-shown" onClick={this.flip}>{this.props.title}</div>
     }
 
     flip() {
