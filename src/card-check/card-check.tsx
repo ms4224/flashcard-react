@@ -1,5 +1,6 @@
 import React from 'react';
 import Flip from '../flip/flip';
+import './card-check.scss'
 
 class CardCheck extends React.Component<ICardCheckProps, ICardCheckState> {
     constructor(public props: ICardCheckProps) {
@@ -17,8 +18,8 @@ class CardCheck extends React.Component<ICardCheckProps, ICardCheckState> {
                 {this.props.card.sampleSentence ? <Flip word={this.props.card.sampleSentence} title={'sample'}></Flip> : <></>}
                 {this.props.card.tag ? <Flip word={this.props.card.tag} title={'tag'}></Flip> : <></>}
                 <div className="card-check-confirm-buttons-container">
-                    <button onClick={this.good}>Good</button>
-                    <button onClick={this.redo}>Redo</button>
+                    <div><button onClick={this.good}>Good</button></div>
+                    <div><button onClick={this.redo}>Redo</button></div>
                 </div>
             </div>
         )
