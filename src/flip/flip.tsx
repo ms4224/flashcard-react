@@ -1,5 +1,6 @@
 
 import React from 'react';
+import './flip.scss';
 
 class Flip extends React.Component<IFlipProps, IFlipState> {
     constructor( public props: IFlipProps) {
@@ -13,18 +14,15 @@ class Flip extends React.Component<IFlipProps, IFlipState> {
 
     render() {
         return (
-            <div>
+            <div className={'card'}>
                 {this.card()}
             </div>
         )
     }
 
     componentDidUpdate(prevProps: IFlipProps) {
-        console.log('called')
-        // this.setState({
-        //     flip: false
-        // })
         if (this.props.word !== prevProps.word) {
+            console.log('props change!')
             this.setState({
                 flip: false
             })
